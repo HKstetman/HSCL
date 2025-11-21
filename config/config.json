@@ -1,9 +1,9 @@
 {
   "datasetCommonParams": {
-    "dataset_root_dir": "/data/yba_data/",
+    "dataset_root_dir": "/your path/",
     "mosi": {
       "aligned": {
-        "featurePath": "MOSI_withBert/Processed/aligned_50.pkl",
+        "featurePath": "your path/aligned_50.pkl",
         "feature_dims": [768, 5, 20], 
         "train_samples": 1284,
         "num_classes": 3,
@@ -11,7 +11,7 @@
         "KeyEval": "Loss"
       },
       "unaligned": {
-        "featurePath": "MOSI_withBert/Processed/unaligned_50.pkl",
+        "featurePath": "your path/unaligned_50.pkl",
         "feature_dims": [768, 5, 20],
         "train_samples": 1284,
         "num_classes": 3,
@@ -21,7 +21,7 @@
     },
     "mosei": {
       "aligned": {
-        "featurePath": "MOSEI_withBert/Processed/aligned_50.pkl",
+        "featurePath": "your path/aligned_50.pkl",
         "feature_dims": [768, 74, 35],
         "train_samples": 16326,
         "num_classes": 3,
@@ -29,7 +29,7 @@
         "KeyEval": "Loss"
       },
       "unaligned": {
-        "featurePath": "MOSEI_withBert/Processed/unaligned_50.pkl",
+        "featurePath": "your path/unaligned_50.pkl",
         "feature_dims": [768, 74, 35],
         "train_samples": 16326,
         "num_classes": 3,
@@ -39,7 +39,7 @@
     },
     "sims":{
       "unaligned": {
-        "featurePath": "SIMS/unaligned_39.pkl",
+        "featurePath": "your path/unaligned_39.pkl",
           "feature_dims": [768, 33, 709],
           "train_samples": 1368,
           "num_classes": 3,
@@ -79,7 +79,7 @@
         "patience": 5,
         "weight_decay": 0.005,
         "transformers": "bert",
-        "pretrained": "/home/yangboan/bert-base-uncased"
+        "pretrained": "bert-base-uncased"
       },
       "sims": {
         "attn_dropout_a": 0.2,
@@ -101,7 +101,7 @@
         "patience": 5,
         "weight_decay": 0.005,
         "transformers": "bert",
-        "pretrained": "/home/yangboan/bert-base-chinese"
+        "pretrained": "bert-base-chinese"
       },
       "mosei": {
         "attn_dropout_a": 0.0,
