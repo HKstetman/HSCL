@@ -1,30 +1,46 @@
 # Hierarchical Structure Consistency Learning for Multimodal Emotion Recognition (HSCL)
 
-This repository contains the code for our project **Hierarchical Structure Consistency Learning for Multimodal Emotion Recognition (HSCL)**. This work is puiblished on IEEE Transactions on Multimedia.
+This repository contains the code for our project **Hierarchical Structure Consistency Learning for Multimodal Emotion Recognition (HSCL)**. This work is **published** in *IEEE Transactions on Multimedia*.
 
-We build a neural network framework based on **decoupling** and **attention mechanisms**, and introduce a **hierarchical structure consistency learning** algorithm. The proposed approach alleviates **cross-modal asynchrony** and enhances **intra-modal aggregation**. 
+We build a neural network framework based on **decoupling** and **attention mechanisms**, and introduce a **hierarchical structure consistency learning** algorithm. The proposed approach alleviates **cross-modal asynchrony** and enhances **intra-modal aggregation**.
 
-<img width="2097" height="1008" alt="fig2" src="https://github.com/user-attachments/assets/3af53001-2fc5-435f-9c82-d932a88c4aa1" />
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/3af53001-2fc5-435f-9c82-d932a88c4aa1" alt="fig2" width="900" />
+</p>
 
-Our **hierarchical structure consistency learning** algorithm including three levels of consistency: feature level, modality level, and sample level.
+Our **hierarchical structure consistency learning** algorithm includes three levels of consistency: feature level, modality level, and sample level.
 
-<img width="1974" height="689" alt="fig3" src="https://github.com/user-attachments/assets/0fd91190-6925-4770-a4ea-5bf73a791927" />
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/0fd91190-6925-4770-a4ea-5bf73a791927" alt="fig3" width="900" />
+</p>
 
 Experiments on multiple public benchmark datasets demonstrate that our method achieves competitive or superior performance compared to existing baselines.
 
-<img width="1231" height="874" alt="image" src="https://github.com/user-attachments/assets/9c3b0479-bd24-43a3-8964-21cec3862a6e" />
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/9c3b0479-bd24-43a3-8964-21cec3862a6e" alt="results-1" width="900" />
+</p>
 
-<img width="1254" height="1290" alt="image" src="https://github.com/user-attachments/assets/b4f534a8-e3cd-466a-b194-e99dc2dfb5c2" />
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/b4f534a8-e3cd-466a-b194-e99dc2dfb5c2" alt="results-2" width="900" />
+</p>
 
-We have also done various ablation study to prove the effectiveness and robustness of the core pasts.
+We also conduct various ablation studies to demonstrate the effectiveness and robustness of the core **parts**.
 
-<img width="624" height="735" alt="image" src="https://github.com/user-attachments/assets/5a456448-49a4-40ee-afde-826fe0ea2475" />
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/5a456448-49a4-40ee-afde-826fe0ea2475" alt="ablation-1" width="800" />
+</p>
 
-<img width="1295" height="1376" alt="image" src="https://github.com/user-attachments/assets/8dd0c945-6dc8-4e0f-9626-7cb1fbc6e49d" />
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/8dd0c945-6dc8-4e0f-9626-7cb1fbc6e49d" alt="ablation-2" width="900" />
+</p>
 
-<img width="631" height="411" alt="image" src="https://github.com/user-attachments/assets/e6e426fe-db5d-4c90-8e78-cf70c2369cb8" />
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/e6e426fe-db5d-4c90-8e78-cf70c2369cb8" alt="ablation-3" width="700" />
+</p>
 
-<img width="573" height="321" alt="image" src="https://github.com/user-attachments/assets/697a34f6-7b95-4668-9959-fbdb663d18a6" />
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/697a34f6-7b95-4668-9959-fbdb663d18a6" alt="ablation-4" width="700" />
+</p>
 
 ---
 
