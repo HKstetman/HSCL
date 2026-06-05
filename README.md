@@ -1,6 +1,6 @@
 # Hierarchical Structure Consistency Learning for Multimodal Emotion Recognition (HSCL)
 
-This repository contains the code for our project **Hierarchical Structure Consistency Learning for Multimodal Emotion Recognition (HSCL)**. This work is **published** in *IEEE Transactions on Multimedia*.
+This repository contains the code for our project **Hierarchical Structure Consistency Learning for Multimodal Emotion Recognition (HSCL)**. This work is **published** in *IEEE Transactions on Multimedia*. Paper Link: https://doi.org/10.1109/TMM.2026.3694526
 
 We build a neural network framework based on **decoupling** and **attention mechanisms**, and introduce a **hierarchical structure consistency learning** algorithm. The proposed approach alleviates **cross-modal asynchrony** and enhances **intra-modal aggregation**.
 
