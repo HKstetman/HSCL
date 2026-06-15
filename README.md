@@ -1165,6 +1165,12 @@ config/config.json
 
 In particular, replace the placeholder value of `dataset_root_dir` and verify the aligned or unaligned feature paths for each dataset.
 
+We recommend that users download these publicly available datasets from official channels, but for quick access, proceeded data files can be downloaded from the following links:
+
+- MOSI and MOSEI: [Google Drive](https://drive.google.com/drive/folders/1BBadVSptOe4h8TWchkhWZRLJw8YG_aEi)
+- SIMS: [Google Drive](https://drive.google.com/file/d/1W210HygAtU-Cp-TGwALGDHjN9MfsacMB/view?usp=drive_link)
+
+
 ### 4. Train HSCL
 
 Set `dataset_name` in `train.py` to one of `mosi`, `mosei`, or `sims`, then run:
