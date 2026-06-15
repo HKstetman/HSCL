@@ -57,66 +57,1057 @@ These constraints are applied to both the original multimodal features and the r
 
 ## Main Results
 
-HSCL is evaluated on **CMU-MOSI**, **CMU-MOSEI**, and **CH-SIMS** under aligned and unaligned settings. Accuracy and F1 values are reported as percentages. Higher values are better for accuracy, F1, and correlation, while lower values are better for MAE.
+### Table I. Comparison on CMU-MOSI
 
-### CMU-MOSI and CMU-MOSEI
+<p align="center"><strong>Comparison of results on the CMU-MOSI dataset.</strong><br>
+<em>* indicates that the method uses BERT-based features. Bold denotes the best result, and underlining denotes the second-best result. ↑ means higher is better, and ↓ means lower is better.</em></p>
 
-| Dataset | Setting | ACC2 ↑ | ACC5 ↑ | ACC7 ↑ | F1 ↑ | MAE ↓ | Corr ↑ |
-|:--|:--|--:|--:|--:|--:|--:|--:|
-| CMU-MOSI | Unaligned | 85.2 | 52.4 | 46.9 | 85.2 | 0.716 | **0.806** |
-| CMU-MOSI | Aligned | 85.5 | 51.5 | 46.5 | **85.6** | **0.712** | 0.785 |
-| CMU-MOSEI | Unaligned | **85.6** | **55.3** | **53.7** | **85.4** | 0.541 | 0.766 |
-| CMU-MOSEI | Aligned | 85.4 | 54.5 | 53.1 | **85.4** | **0.538** | **0.769** |
+<table>
+  <thead>
+    <tr>
+      <th align="center">Setting</th>
+      <th align="center">Methods</th>
+      <th align="center">ACC<sub>2</sub> ↑ (%)</th>
+      <th align="center">ACC<sub>5</sub> ↑ (%)</th>
+      <th align="center">ACC<sub>7</sub> ↑ (%)</th>
+      <th align="center">F1 ↑ (%)</th>
+      <th align="center">MAE ↓</th>
+      <th align="center">Corr ↑</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center" rowspan="15">Unaligned</td>
+      <td align="center">EF-LSTM</td>
+      <td align="center">73.6</td>
+      <td align="center">33.1</td>
+      <td align="center">31.0</td>
+      <td align="center">74.5</td>
+      <td align="center">1.420</td>
+      <td align="center">0.508</td>
+    </tr>
+    <tr>
+      <td align="center">LF-DNN</td>
+      <td align="center">78.2</td>
+      <td align="center">36.9</td>
+      <td align="center">32.5</td>
+      <td align="center">78.3</td>
+      <td align="center">0.987</td>
+      <td align="center">0.649</td>
+    </tr>
+    <tr>
+      <td align="center">TFN</td>
+      <td align="center">76.5</td>
+      <td align="center">40.5</td>
+      <td align="center">35.3</td>
+      <td align="center">76.6</td>
+      <td align="center">0.995</td>
+      <td align="center">0.617</td>
+    </tr>
+    <tr>
+      <td align="center">LMF</td>
+      <td align="center">79.1</td>
+      <td align="center">33.2</td>
+      <td align="center">31.1</td>
+      <td align="center">79.1</td>
+      <td align="center">0.963</td>
+      <td align="center">0.672</td>
+    </tr>
+    <tr>
+      <td align="center">MFN</td>
+      <td align="center">80.0</td>
+      <td align="center">38.5</td>
+      <td align="center">34.7</td>
+      <td align="center">80.1</td>
+      <td align="center">0.971</td>
+      <td align="center">0.661</td>
+    </tr>
+    <tr>
+      <td align="center">Graph-MFN</td>
+      <td align="center">79.4</td>
+      <td align="center">38.2</td>
+      <td align="center">34.4</td>
+      <td align="center">79.2</td>
+      <td align="center">0.930</td>
+      <td align="center">0.671</td>
+    </tr>
+    <tr>
+      <td align="center">MCTN</td>
+      <td align="center">77.1</td>
+      <td align="center">33.4</td>
+      <td align="center">31.9</td>
+      <td align="center">77.3</td>
+      <td align="center">1.033</td>
+      <td align="center">0.650</td>
+    </tr>
+    <tr>
+      <td align="center">MulT</td>
+      <td align="center">80.3</td>
+      <td align="center">37.8</td>
+      <td align="center">33.2</td>
+      <td align="center">80.3</td>
+      <td align="center">0.933</td>
+      <td align="center">0.685</td>
+    </tr>
+    <tr>
+      <td align="center">MISA*</td>
+      <td align="center">83.8</td>
+      <td align="center">49.9</td>
+      <td align="center">43.6</td>
+      <td align="center">83.9</td>
+      <td align="center">0.742</td>
+      <td align="center">0.797</td>
+    </tr>
+    <tr>
+      <td align="center">Self-MM*</td>
+      <td align="center">83.4</td>
+      <td align="center"><u>52.2</u></td>
+      <td align="center">45.7</td>
+      <td align="center">83.6</td>
+      <td align="center">0.724</td>
+      <td align="center">0.794</td>
+    </tr>
+    <tr>
+      <td align="center">MMIM*</td>
+      <td align="center">83.4</td>
+      <td align="center">49.8</td>
+      <td align="center"><u>45.9</u></td>
+      <td align="center">83.4</td>
+      <td align="center">0.777</td>
+      <td align="center">0.771</td>
+    </tr>
+    <tr>
+      <td align="center">TETFN*</td>
+      <td align="center"><u>86.1</u></td>
+      <td align="center">-</td>
+      <td align="center">-</td>
+      <td align="center">86.0</td>
+      <td align="center">0.717</td>
+      <td align="center"><u>0.800</u></td>
+    </tr>
+    <tr>
+      <td align="center">SUGRM*</td>
+      <td align="center"><strong>86.3</strong></td>
+      <td align="center">-</td>
+      <td align="center">-</td>
+      <td align="center"><strong>86.3</strong></td>
+      <td align="center"><strong>0.703</strong></td>
+      <td align="center">0.800</td>
+    </tr>
+    <tr>
+      <td align="center">MUTA-Net*</td>
+      <td align="center">84.9</td>
+      <td align="center">-</td>
+      <td align="center">-</td>
+      <td align="center">84.9</td>
+      <td align="center"><u>0.708</u></td>
+      <td align="center">0.798</td>
+    </tr>
+    <tr>
+      <td align="center">HSCL (Ours)*</td>
+      <td align="center">85.2</td>
+      <td align="center"><strong>52.4</strong></td>
+      <td align="center"><strong>46.9</strong></td>
+      <td align="center">85.2</td>
+      <td align="center">0.716</td>
+      <td align="center"><strong>0.806</strong></td>
+    </tr>
+    <tr>
+      <td align="center" rowspan="15">Aligned</td>
+      <td align="center">EF-LSTM</td>
+      <td align="center">75.3</td>
+      <td align="center">35.1</td>
+      <td align="center">33.7</td>
+      <td align="center">75.2</td>
+      <td align="center">1.386</td>
+      <td align="center">0.494</td>
+    </tr>
+    <tr>
+      <td align="center">LF-DNN</td>
+      <td align="center">78.4</td>
+      <td align="center">33.5</td>
+      <td align="center">31.5</td>
+      <td align="center">78.3</td>
+      <td align="center">0.972</td>
+      <td align="center">0.650</td>
+    </tr>
+    <tr>
+      <td align="center">TFN</td>
+      <td align="center">78.8</td>
+      <td align="center">38.3</td>
+      <td align="center">31.9</td>
+      <td align="center">78.9</td>
+      <td align="center">0.953</td>
+      <td align="center">0.680</td>
+    </tr>
+    <tr>
+      <td align="center">LMF</td>
+      <td align="center">78.7</td>
+      <td align="center">41.7</td>
+      <td align="center">36.9</td>
+      <td align="center">78.7</td>
+      <td align="center">0.931</td>
+      <td align="center">0.652</td>
+    </tr>
+    <tr>
+      <td align="center">MFN</td>
+      <td align="center">78.4</td>
+      <td align="center">40.8</td>
+      <td align="center">35.6</td>
+      <td align="center">78.4</td>
+      <td align="center">0.964</td>
+      <td align="center">0.657</td>
+    </tr>
+    <tr>
+      <td align="center">Graph-MFN</td>
+      <td align="center">78.1</td>
+      <td align="center">35.1</td>
+      <td align="center">31.5</td>
+      <td align="center">78.1</td>
+      <td align="center">0.970</td>
+      <td align="center">0.661</td>
+    </tr>
+    <tr>
+      <td align="center">MCTN</td>
+      <td align="center">79.9</td>
+      <td align="center">35.0</td>
+      <td align="center">33.1</td>
+      <td align="center">80.0</td>
+      <td align="center">0.963</td>
+      <td align="center">0.681</td>
+    </tr>
+    <tr>
+      <td align="center">MulT</td>
+      <td align="center">80.0</td>
+      <td align="center">41.7</td>
+      <td align="center">35.1</td>
+      <td align="center">80.1</td>
+      <td align="center">0.936</td>
+      <td align="center">0.691</td>
+    </tr>
+    <tr>
+      <td align="center">MISA*</td>
+      <td align="center">84.2</td>
+      <td align="center">47.8</td>
+      <td align="center">41.8</td>
+      <td align="center">84.2</td>
+      <td align="center">0.754</td>
+      <td align="center">0.785</td>
+    </tr>
+    <tr>
+      <td align="center">Self-MM*</td>
+      <td align="center">84.9</td>
+      <td align="center"><u>51.5</u></td>
+      <td align="center">45.3</td>
+      <td align="center">84.9</td>
+      <td align="center">0.738</td>
+      <td align="center">0.738</td>
+    </tr>
+    <tr>
+      <td align="center">MMIM*</td>
+      <td align="center">84.6</td>
+      <td align="center"><strong>51.9</strong></td>
+      <td align="center"><u>45.8</u></td>
+      <td align="center">84.5</td>
+      <td align="center"><u>0.717</u></td>
+      <td align="center">0.783</td>
+    </tr>
+    <tr>
+      <td align="center">SUGRM*</td>
+      <td align="center">84.5</td>
+      <td align="center">-</td>
+      <td align="center">-</td>
+      <td align="center">84.5</td>
+      <td align="center">0.723</td>
+      <td align="center"><strong>0.798</strong></td>
+    </tr>
+    <tr>
+      <td align="center">MUTA-Net*</td>
+      <td align="center">85.0</td>
+      <td align="center">-</td>
+      <td align="center">-</td>
+      <td align="center">85.0</td>
+      <td align="center">0.730</td>
+      <td align="center"><u>0.793</u></td>
+    </tr>
+    <tr>
+      <td align="center">CAGC*</td>
+      <td align="center"><strong>85.7</strong></td>
+      <td align="center">-</td>
+      <td align="center">44.8</td>
+      <td align="center"><strong>85.6</strong></td>
+      <td align="center">0.742</td>
+      <td align="center">0.775</td>
+    </tr>
+    <tr>
+      <td align="center">HSCL (Ours)*</td>
+      <td align="center"><u>85.5</u></td>
+      <td align="center"><u>51.5</u></td>
+      <td align="center"><strong>46.5</strong></td>
+      <td align="center"><strong>85.6</strong></td>
+      <td align="center"><strong>0.712</strong></td>
+      <td align="center">0.785</td>
+    </tr>
+  </tbody>
+</table>
 
-### CH-SIMS
+### Table II. Comparison on CMU-MOSEI
 
-| Dataset | Setting | ACC2 ↑ | ACC3 ↑ | ACC5 ↑ | F1 ↑ | MAE ↓ | Corr ↑ |
-|:--|:--|--:|--:|--:|--:|--:|--:|
-| CH-SIMS | Unaligned | **80.5** | **65.2** | **43.5** | **80.5** | **0.415** | **0.609** |
+<p align="center"><strong>Comparison of results on the CMU-MOSEI dataset.</strong><br>
+<em>* indicates that the method uses BERT-based features. Bold denotes the best result, and underlining denotes the second-best result. ↑ means higher is better, and ↓ means lower is better.</em></p>
 
-The complete comparisons with all baselines are available in the paper.
+<table>
+  <thead>
+    <tr>
+      <th align="center">Setting</th>
+      <th align="center">Methods</th>
+      <th align="center">ACC<sub>2</sub> ↑ (%)</th>
+      <th align="center">ACC<sub>5</sub> ↑ (%)</th>
+      <th align="center">ACC<sub>7</sub> ↑ (%)</th>
+      <th align="center">F1 ↑ (%)</th>
+      <th align="center">MAE ↓</th>
+      <th align="center">Corr ↑</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center" rowspan="15">Unaligned</td>
+      <td align="center">EF-LSTM</td>
+      <td align="center">76.1</td>
+      <td align="center">48.0</td>
+      <td align="center">46.3</td>
+      <td align="center">75.9</td>
+      <td align="center">0.594</td>
+      <td align="center">0.725</td>
+    </tr>
+    <tr>
+      <td align="center">LF-DNN</td>
+      <td align="center">83.7</td>
+      <td align="center">53.8</td>
+      <td align="center">52.3</td>
+      <td align="center">83.2</td>
+      <td align="center">0.561</td>
+      <td align="center">0.728</td>
+    </tr>
+    <tr>
+      <td align="center">TFN</td>
+      <td align="center">84.2</td>
+      <td align="center">51.7</td>
+      <td align="center">50.2</td>
+      <td align="center">84.0</td>
+      <td align="center">0.573</td>
+      <td align="center">0.728</td>
+    </tr>
+    <tr>
+      <td align="center">LMF</td>
+      <td align="center">83.8</td>
+      <td align="center">53.6</td>
+      <td align="center">51.9</td>
+      <td align="center">83.9</td>
+      <td align="center">0.565</td>
+      <td align="center">0.735</td>
+    </tr>
+    <tr>
+      <td align="center">MFN</td>
+      <td align="center">83.2</td>
+      <td align="center">52.5</td>
+      <td align="center">51.3</td>
+      <td align="center">83.3</td>
+      <td align="center">0.567</td>
+      <td align="center">0.726</td>
+    </tr>
+    <tr>
+      <td align="center">Graph-MFN</td>
+      <td align="center">84.2</td>
+      <td align="center">52.9</td>
+      <td align="center">51.8</td>
+      <td align="center">84.2</td>
+      <td align="center">0.568</td>
+      <td align="center">0.725</td>
+    </tr>
+    <tr>
+      <td align="center">MFM</td>
+      <td align="center">82.3</td>
+      <td align="center">53.1</td>
+      <td align="center">52.0</td>
+      <td align="center">82.5</td>
+      <td align="center">0.572</td>
+      <td align="center">0.729</td>
+    </tr>
+    <tr>
+      <td align="center">MulT</td>
+      <td align="center">84.0</td>
+      <td align="center">55.0</td>
+      <td align="center">53.2</td>
+      <td align="center">84.0</td>
+      <td align="center">0.556</td>
+      <td align="center">0.740</td>
+    </tr>
+    <tr>
+      <td align="center">MISA*</td>
+      <td align="center">84.8</td>
+      <td align="center">52.4</td>
+      <td align="center">51.0</td>
+      <td align="center">84.8</td>
+      <td align="center">0.557</td>
+      <td align="center">0.756</td>
+    </tr>
+    <tr>
+      <td align="center">Self-MM*</td>
+      <td align="center">85.3</td>
+      <td align="center"><strong>55.8</strong></td>
+      <td align="center">52.9</td>
+      <td align="center">84.8</td>
+      <td align="center"><strong>0.535</strong></td>
+      <td align="center">0.761</td>
+    </tr>
+    <tr>
+      <td align="center">MMIM*</td>
+      <td align="center">81.5</td>
+      <td align="center">54.1</td>
+      <td align="center">52.6</td>
+      <td align="center">81.3</td>
+      <td align="center">0.578</td>
+      <td align="center">0.706</td>
+    </tr>
+    <tr>
+      <td align="center">TETFN*</td>
+      <td align="center">85.1</td>
+      <td align="center">-</td>
+      <td align="center">-</td>
+      <td align="center"><u>85.2</u></td>
+      <td align="center">0.551</td>
+      <td align="center">0.748</td>
+    </tr>
+    <tr>
+      <td align="center">SUGRM*</td>
+      <td align="center">84.0</td>
+      <td align="center">-</td>
+      <td align="center">-</td>
+      <td align="center">84.4</td>
+      <td align="center">0.544</td>
+      <td align="center">0.748</td>
+    </tr>
+    <tr>
+      <td align="center">MUTA-Net*</td>
+      <td align="center"><u>85.2</u></td>
+      <td align="center">-</td>
+      <td align="center">-</td>
+      <td align="center"><u>85.2</u></td>
+      <td align="center"><u>0.537</u></td>
+      <td align="center"><u>0.764</u></td>
+    </tr>
+    <tr>
+      <td align="center">HSCL (Ours)*</td>
+      <td align="center"><strong>85.6</strong></td>
+      <td align="center"><u>55.3</u></td>
+      <td align="center"><strong>53.7</strong></td>
+      <td align="center"><strong>85.4</strong></td>
+      <td align="center">0.541</td>
+      <td align="center"><strong>0.766</strong></td>
+    </tr>
+    <tr>
+      <td align="center" rowspan="14">Aligned</td>
+      <td align="center">EF-LSTM</td>
+      <td align="center">78.2</td>
+      <td align="center">51.1</td>
+      <td align="center">47.4</td>
+      <td align="center">77.9</td>
+      <td align="center">0.620</td>
+      <td align="center">0.679</td>
+    </tr>
+    <tr>
+      <td align="center">LF-DNN</td>
+      <td align="center">83.5</td>
+      <td align="center">53.1</td>
+      <td align="center">51.7</td>
+      <td align="center">83.1</td>
+      <td align="center">0.568</td>
+      <td align="center">0.734</td>
+    </tr>
+    <tr>
+      <td align="center">TFN</td>
+      <td align="center">80.4</td>
+      <td align="center">52.4</td>
+      <td align="center">50.9</td>
+      <td align="center">80.7</td>
+      <td align="center">0.574</td>
+      <td align="center">0.714</td>
+    </tr>
+    <tr>
+      <td align="center">LMF</td>
+      <td align="center">84.7</td>
+      <td align="center">53.6</td>
+      <td align="center">52.3</td>
+      <td align="center">84.5</td>
+      <td align="center">0.564</td>
+      <td align="center">0.734</td>
+    </tr>
+    <tr>
+      <td align="center">MFN</td>
+      <td align="center">84.0</td>
+      <td align="center">52.3</td>
+      <td align="center">50.8</td>
+      <td align="center">84.0</td>
+      <td align="center">0.574</td>
+      <td align="center">0.722</td>
+    </tr>
+    <tr>
+      <td align="center">Graph-MFN</td>
+      <td align="center">84.6</td>
+      <td align="center">52.9</td>
+      <td align="center">51.6</td>
+      <td align="center">84.5</td>
+      <td align="center">0.553</td>
+      <td align="center">0.740</td>
+    </tr>
+    <tr>
+      <td align="center">MFM</td>
+      <td align="center">83.5</td>
+      <td align="center">50.0</td>
+      <td align="center">49.4</td>
+      <td align="center">83.4</td>
+      <td align="center">0.590</td>
+      <td align="center">0.722</td>
+    </tr>
+    <tr>
+      <td align="center">MulT</td>
+      <td align="center">82.7</td>
+      <td align="center">53.9</td>
+      <td align="center">52.3</td>
+      <td align="center">82.8</td>
+      <td align="center">0.572</td>
+      <td align="center">0.723</td>
+    </tr>
+    <tr>
+      <td align="center">MISA*</td>
+      <td align="center"><u>85.3</u></td>
+      <td align="center">54.1</td>
+      <td align="center">52.3</td>
+      <td align="center">85.1</td>
+      <td align="center">0.543</td>
+      <td align="center"><u>0.764</u></td>
+    </tr>
+    <tr>
+      <td align="center">Self-MM*</td>
+      <td align="center">84.5</td>
+      <td align="center"><strong>54.9</strong></td>
+      <td align="center"><strong>53.2</strong></td>
+      <td align="center">84.3</td>
+      <td align="center"><u>0.540</u></td>
+      <td align="center"><strong>0.769</strong></td>
+    </tr>
+    <tr>
+      <td align="center">MMIM*</td>
+      <td align="center">83.6</td>
+      <td align="center">51.9</td>
+      <td align="center">50.1</td>
+      <td align="center">83.5</td>
+      <td align="center">0.580</td>
+      <td align="center">0.729</td>
+    </tr>
+    <tr>
+      <td align="center">SUGRM*</td>
+      <td align="center">85.1</td>
+      <td align="center">-</td>
+      <td align="center">-</td>
+      <td align="center">85.0</td>
+      <td align="center">0.541</td>
+      <td align="center">0.758</td>
+    </tr>
+    <tr>
+      <td align="center">MUTA-Net*</td>
+      <td align="center">85.0</td>
+      <td align="center">-</td>
+      <td align="center">-</td>
+      <td align="center">84.9</td>
+      <td align="center">0.544</td>
+      <td align="center">0.760</td>
+    </tr>
+    <tr>
+      <td align="center">HSCL (Ours)*</td>
+      <td align="center"><strong>85.4</strong></td>
+      <td align="center"><u>54.5</u></td>
+      <td align="center"><u>53.1</u></td>
+      <td align="center"><strong>85.4</strong></td>
+      <td align="center"><strong>0.538</strong></td>
+      <td align="center"><strong>0.769</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+### Table III. Comparison on CH-SIMS
+
+<p align="center"><strong>Comparison of results on the CH-SIMS dataset.</strong><br>
+<em>* indicates that the method uses BERT-based features. Bold denotes the best result, and underlining denotes the second-best result. ↑ means higher is better, and ↓ means lower is better.</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th align="center">Setting</th>
+      <th align="center">Methods</th>
+      <th align="center">ACC<sub>2</sub> ↑ (%)</th>
+      <th align="center">ACC<sub>3</sub> ↑ (%)</th>
+      <th align="center">ACC<sub>5</sub> ↑ (%)</th>
+      <th align="center">F1 ↑ (%)</th>
+      <th align="center">MAE ↓</th>
+      <th align="center">Corr ↑</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center" rowspan="12">Unaligned</td>
+      <td align="center">EF-LSTM</td>
+      <td align="center">69.4</td>
+      <td align="center">54.3</td>
+      <td align="center">21.2</td>
+      <td align="center">56.8</td>
+      <td align="center">0.590</td>
+      <td align="center">0.055</td>
+    </tr>
+    <tr>
+      <td align="center">LF-DNN</td>
+      <td align="center">77.0</td>
+      <td align="center">64.3</td>
+      <td align="center">39.7</td>
+      <td align="center">77.3</td>
+      <td align="center">0.446</td>
+      <td align="center">0.555</td>
+    </tr>
+    <tr>
+      <td align="center">TFN</td>
+      <td align="center">78.4</td>
+      <td align="center">65.1</td>
+      <td align="center">39.3</td>
+      <td align="center">78.6</td>
+      <td align="center">0.432</td>
+      <td align="center">0.591</td>
+    </tr>
+    <tr>
+      <td align="center">LMF</td>
+      <td align="center">77.8</td>
+      <td align="center">64.7</td>
+      <td align="center">40.5</td>
+      <td align="center">77.9</td>
+      <td align="center">0.441</td>
+      <td align="center">0.576</td>
+    </tr>
+    <tr>
+      <td align="center">MFN</td>
+      <td align="center">77.9</td>
+      <td align="center">65.7</td>
+      <td align="center">39.5</td>
+      <td align="center">77.9</td>
+      <td align="center">0.435</td>
+      <td align="center">0.582</td>
+    </tr>
+    <tr>
+      <td align="center">Graph-MFN</td>
+      <td align="center">78.8</td>
+      <td align="center">65.7</td>
+      <td align="center">39.8</td>
+      <td align="center">78.2</td>
+      <td align="center">0.445</td>
+      <td align="center">0.578</td>
+    </tr>
+    <tr>
+      <td align="center">MFM</td>
+      <td align="center">75.1</td>
+      <td align="center">54.3</td>
+      <td align="center">21.2</td>
+      <td align="center">75.6</td>
+      <td align="center">0.477</td>
+      <td align="center">0.525</td>
+    </tr>
+    <tr>
+      <td align="center">MulT</td>
+      <td align="center">78.6</td>
+      <td align="center">64.8</td>
+      <td align="center">37.9</td>
+      <td align="center">79.7</td>
+      <td align="center">0.453</td>
+      <td align="center">0.564</td>
+    </tr>
+    <tr>
+      <td align="center">MISA*</td>
+      <td align="center">69.5</td>
+      <td align="center">54.1</td>
+      <td align="center">21.8</td>
+      <td align="center">57.0</td>
+      <td align="center">0.588</td>
+      <td align="center">0.542</td>
+    </tr>
+    <tr>
+      <td align="center">Self-MM*</td>
+      <td align="center">78.7</td>
+      <td align="center"><strong>65.5</strong></td>
+      <td align="center"><u>41.5</u></td>
+      <td align="center">78.7</td>
+      <td align="center"><u>0.422</u></td>
+      <td align="center">0.584</td>
+    </tr>
+    <tr>
+      <td align="center">MUTA-Net*</td>
+      <td align="center"><u>79.2</u></td>
+      <td align="center">-</td>
+      <td align="center">-</td>
+      <td align="center"><u>79.3</u></td>
+      <td align="center">0.428</td>
+      <td align="center"><u>0.594</u></td>
+    </tr>
+    <tr>
+      <td align="center">HSCL (Ours)*</td>
+      <td align="center"><strong>80.5</strong></td>
+      <td align="center"><u>65.2</u></td>
+      <td align="center"><strong>43.5</strong></td>
+      <td align="center"><strong>80.5</strong></td>
+      <td align="center"><strong>0.415</strong></td>
+      <td align="center"><strong>0.609</strong></td>
+    </tr>
+  </tbody>
+</table>
+
 
 ## Ablation Studies
 
-### Effect of Hierarchical Structure Consistency
+### Table IV. Ablation Study of Each Level of Consistency
 
-The following table compares the basic multimodal emotion recognition network with the complete HSCL model.
+<p align="center"><strong>Ablation study of each level of consistency in HSCL under unaligned data settings.</strong></p>
 
-| Dataset | Setting | Model | ACC2 ↑ | F1 ↑ | MAE ↓ |
-|:--|:--|:--|--:|--:|--:|
-| CMU-MOSI | Unaligned | MER Network | 82.2 | 82.1 | 0.775 |
-| CMU-MOSI | Unaligned | **HSCL** | **85.2** | **85.2** | **0.716** |
-| CMU-MOSEI | Unaligned | MER Network | 84.5 | 84.5 | 0.552 |
-| CMU-MOSEI | Unaligned | **HSCL** | **85.6** | **85.4** | **0.541** |
-| CH-SIMS | Unaligned | MER Network | 77.7 | 77.6 | 0.435 |
-| CH-SIMS | Unaligned | **HSCL** | **80.5** | **80.5** | **0.415** |
-| CMU-MOSI | Aligned | MER Network | 84.4 | 84.3 | 0.749 |
-| CMU-MOSI | Aligned | **HSCL** | **85.5** | **85.6** | **0.712** |
-| CMU-MOSEI | Aligned | MER Network | 85.1 | 85.1 | 0.540 |
-| CMU-MOSEI | Aligned | **HSCL** | **85.4** | **85.3** | **0.538** |
+<table>
+  <thead>
+    <tr>
+      <th align="center" rowspan="2">Dataset</th>
+      <th align="center" colspan="4">Hierarchical Consistency</th>
+      <th align="center" rowspan="2">ACC<sub>2</sub> (%)</th>
+      <th align="center" rowspan="2">F1 (%)</th>
+      <th align="center" rowspan="2">MAE</th>
+    </tr>
+    <tr>
+      <th align="center">Sem-</th>
+      <th align="center">Rep-</th>
+      <th align="center">Geo-</th>
+      <th align="center">Rec-</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center" rowspan="8">MOSI</td>
+      <td align="center">✓</td>
+      <td align="center">✓</td>
+      <td align="center">✓</td>
+      <td align="center">✓</td>
+      <td align="center">85.2</td>
+      <td align="center">85.2</td>
+      <td align="center">0.716</td>
+    </tr>
+    <tr>
+      <td align="center">✓</td>
+      <td align="center">✓</td>
+      <td align="center">✓</td>
+      <td align="center"></td>
+      <td align="center">84.2</td>
+      <td align="center">84.2</td>
+      <td align="center">0.743</td>
+    </tr>
+    <tr>
+      <td align="center"></td>
+      <td align="center">✓</td>
+      <td align="center">✓</td>
+      <td align="center"></td>
+      <td align="center">84.0</td>
+      <td align="center">83.9</td>
+      <td align="center">0.741</td>
+    </tr>
+    <tr>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center">✓</td>
+      <td align="center">83.7</td>
+      <td align="center">83.7</td>
+      <td align="center">0.726</td>
+    </tr>
+    <tr>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center">✓</td>
+      <td align="center"></td>
+      <td align="center">82.9</td>
+      <td align="center">82.9</td>
+      <td align="center">0.741</td>
+    </tr>
+    <tr>
+      <td align="center"></td>
+      <td align="center">✓</td>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center">83.1</td>
+      <td align="center">83.1</td>
+      <td align="center">0.738</td>
+    </tr>
+    <tr>
+      <td align="center">✓</td>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center">82.6</td>
+      <td align="center">82.4</td>
+      <td align="center">0.750</td>
+    </tr>
+    <tr>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center">82.2</td>
+      <td align="center">82.1</td>
+      <td align="center">0.775</td>
+    </tr>
+    <tr>
+      <td align="center" rowspan="8">MOSEI</td>
+      <td align="center">✓</td>
+      <td align="center">✓</td>
+      <td align="center">✓</td>
+      <td align="center">✓</td>
+      <td align="center">85.6</td>
+      <td align="center">85.4</td>
+      <td align="center">0.541</td>
+    </tr>
+    <tr>
+      <td align="center">✓</td>
+      <td align="center">✓</td>
+      <td align="center">✓</td>
+      <td align="center"></td>
+      <td align="center">85.4</td>
+      <td align="center">85.4</td>
+      <td align="center">0.549</td>
+    </tr>
+    <tr>
+      <td align="center"></td>
+      <td align="center">✓</td>
+      <td align="center">✓</td>
+      <td align="center"></td>
+      <td align="center">85.3</td>
+      <td align="center">85.1</td>
+      <td align="center">0.544</td>
+    </tr>
+    <tr>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center">✓</td>
+      <td align="center">84.8</td>
+      <td align="center">84.9</td>
+      <td align="center">0.543</td>
+    </tr>
+    <tr>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center">✓</td>
+      <td align="center"></td>
+      <td align="center">85.3</td>
+      <td align="center">85.3</td>
+      <td align="center">0.559</td>
+    </tr>
+    <tr>
+      <td align="center"></td>
+      <td align="center">✓</td>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center">84.9</td>
+      <td align="center">85.0</td>
+      <td align="center">0.537</td>
+    </tr>
+    <tr>
+      <td align="center">✓</td>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center">84.8</td>
+      <td align="center">84.8</td>
+      <td align="center">0.550</td>
+    </tr>
+    <tr>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center">84.5</td>
+      <td align="center">84.5</td>
+      <td align="center">0.552</td>
+    </tr>
+    <tr>
+      <td align="center" rowspan="8">SIMS</td>
+      <td align="center">✓</td>
+      <td align="center">✓</td>
+      <td align="center">✓</td>
+      <td align="center">✓</td>
+      <td align="center">80.5</td>
+      <td align="center">80.5</td>
+      <td align="center">0.415</td>
+    </tr>
+    <tr>
+      <td align="center">✓</td>
+      <td align="center">✓</td>
+      <td align="center">✓</td>
+      <td align="center"></td>
+      <td align="center">79.8</td>
+      <td align="center">79.7</td>
+      <td align="center">0.414</td>
+    </tr>
+    <tr>
+      <td align="center"></td>
+      <td align="center">✓</td>
+      <td align="center">✓</td>
+      <td align="center"></td>
+      <td align="center">79.2</td>
+      <td align="center">79.3</td>
+      <td align="center">0.417</td>
+    </tr>
+    <tr>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center">✓</td>
+      <td align="center">79.2</td>
+      <td align="center">78.9</td>
+      <td align="center">0.439</td>
+    </tr>
+    <tr>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center">✓</td>
+      <td align="center"></td>
+      <td align="center">76.8</td>
+      <td align="center">77.4</td>
+      <td align="center">0.429</td>
+    </tr>
+    <tr>
+      <td align="center"></td>
+      <td align="center">✓</td>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center">77.9</td>
+      <td align="center">78.2</td>
+      <td align="center">0.431</td>
+    </tr>
+    <tr>
+      <td align="center">✓</td>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center">78.1</td>
+      <td align="center">78.2</td>
+      <td align="center">0.420</td>
+    </tr>
+    <tr>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center">77.7</td>
+      <td align="center">77.6</td>
+      <td align="center">0.435</td>
+    </tr>
+  </tbody>
+</table>
 
-### Unimodal Performance on CMU-MOSEI
+### Table V. Comparison of Feature Decoupling and HSCL
 
-| Available Modality | Model | ACC2 ↑ | F1 ↑ | MAE ↓ |
-|:--|:--|--:|--:|--:|
-| Language only | MER Network | 80.2 | 80.6 | 0.570 |
-| Language only | **HSCL** | **84.6** | **84.6** | **0.559** |
-| Visual only | MER Network | 40.8 | 23.8 | 0.889 |
-| Visual only | **HSCL** | **62.9** | **48.5** | **0.833** |
-| Audio only | MER Network | 37.2 | 20.1 | 0.856 |
-| Audio only | **HSCL** | **62.8** | **48.7** | **0.822** |
-| Mean | MER Network | 52.7 | 41.5 | 0.777 |
-| Mean | **HSCL** | **70.1** | **60.6** | **0.738** |
-| Standard deviation | MER Network | 19.5 | 27.7 | 0.143 |
-| Standard deviation | **HSCL** | **10.3** | **17.0** | **0.127** |
+<p align="center"><strong>Comparison of FD and HSCL. FD represents the result of the basic feature decoupling neural network.</strong></p>
 
-### Consistency Weights
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2" align="center">Dataset</th>
+      <th align="center">MER Network</th>
+      <th align="center">HSCL</th>
+    </tr>
+    <tr>
+      <th align="center">ACC<sub>2</sub> (%) / F1 (%) / MAE</th>
+      <th align="center">ACC<sub>2</sub> (%) / F1 (%) / MAE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="3"><strong>Data Setting: unaligned</strong></td>
+    </tr>
+    <tr>
+      <td align="center">MOSI</td>
+      <td align="center">82.2 / 82.1 / 0.775</td>
+      <td align="center"><strong>85.2 / 85.2 / 0.716</strong></td>
+    </tr>
+    <tr>
+      <td align="center">MOSEI</td>
+      <td align="center">84.5 / 84.5 / 0.552</td>
+      <td align="center"><strong>85.6 / 85.4 / 0.541</strong></td>
+    </tr>
+    <tr>
+      <td align="center">SIMS</td>
+      <td align="center">77.7 / 77.6 / 0.435</td>
+      <td align="center"><strong>80.5 / 80.5 / 0.415</strong></td>
+    </tr>
+    <tr>
+      <td colspan="3"><strong>Data Setting: aligned</strong></td>
+    </tr>
+    <tr>
+      <td align="center">MOSI</td>
+      <td align="center">84.4 / 84.3 / 0.749</td>
+      <td align="center"><strong>85.5 / 85.6 / 0.712</strong></td>
+    </tr>
+    <tr>
+      <td align="center">MOSEI</td>
+      <td align="center">85.1 / 85.1 / 0.540</td>
+      <td align="center"><strong>85.4 / 85.3 / 0.538</strong></td>
+    </tr>
+  </tbody>
+</table>
 
-| Consistency Term | Symbol | Selected Value |
-|:--|:--:|--:|
-| Semantic consistency | α | 0.10 |
-| Representation consistency | β | 0.02 |
-| Geometric consistency | γ | 0.08 |
+### Table VI. Unimodal Accuracy Comparison on CMU-MOSEI
+
+<p align="center"><strong>Unimodal accuracy comparison on MOSEI.</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2" align="center">Modality</th>
+      <th align="center">MER Network</th>
+      <th align="center">HSCL</th>
+    </tr>
+    <tr>
+      <th align="center">ACC<sub>2</sub> (%) / F1 (%) / MAE</th>
+      <th align="center">ACC<sub>2</sub> (%) / F1 (%) / MAE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center">L only</td>
+      <td align="center">80.2 / 80.6 / 0.570</td>
+      <td align="center"><strong>84.6 / 84.6 / 0.559</strong></td>
+    </tr>
+    <tr>
+      <td align="center">V only</td>
+      <td align="center">40.8 / 23.8 / 0.889</td>
+      <td align="center"><strong>62.9 / 48.5 / 0.833</strong></td>
+    </tr>
+    <tr>
+      <td align="center">A only</td>
+      <td align="center">37.2 / 20.1 / 0.856</td>
+      <td align="center"><strong>62.8 / 48.7 / 0.822</strong></td>
+    </tr>
+    <tr>
+      <td align="center"><strong>Mean</strong></td>
+      <td align="center">52.7 / 41.5 / 0.777</td>
+      <td align="center"><strong>70.1 / 60.6 / 0.738</strong></td>
+    </tr>
+    <tr>
+      <td align="center"><strong>STD</strong></td>
+      <td align="center">19.5 / 27.7 / 0.143</td>
+      <td align="center"><strong>10.3 / 17.0 / 0.127</strong></td>
+    </tr>
+  </tbody>
+</table>
 
 ### Feature Visualization
 
