@@ -122,17 +122,15 @@ The following table compares the basic multimodal emotion recognition network wi
 
 The PCA visualization shows the distributions of the original and decoupled modality representations.
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/e6e426fe-db5d-4c90-8e78-cf70c2369cb8" alt="PCA visualization of decoupled features" width="700" />
-</p>
+<img width="1051" height="515" alt="image" src="https://github.com/user-attachments/assets/1d83ca69-e7bf-4792-b532-f4fd21339f0c" />
+
 
 ### Hyperparameter Sensitivity
 
 The sensitivity analysis evaluates the effects of the three consistency weights on the main evaluation metrics.
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/697a34f6-7b95-4668-9959-fbdb663d18a6" alt="Hyperparameter sensitivity" width="700" />
-</p>
+<img width="1094" height="587" alt="image" src="https://github.com/user-attachments/assets/2c84ec4d-0db2-49f6-833c-71f0ad9cbfb2" />
+
 
 ## Quick Start
 
