@@ -17,7 +17,7 @@ HSCL addresses two important challenges in multimodal emotion recognition:
 1. **Insufficient intra-modal interaction**, which limits the model's ability to capture fine-grained emotional information within each modality.
 2. **Modality asynchrony**, which causes language, audio, and visual signals to express emotional information at different temporal rhythms.
 
-The method combines feature decoupling, attention-based multimodal fusion, and hierarchical structure consistency learning. The consistency constraints are applied to both the original features and the reconstructed features.
+The method combines feature decoupling, attention-based multimodal fusion, and hierarchical structure consistency learning.
 
 ## Contents
 
@@ -41,15 +41,13 @@ HSCL first extracts language, audio, and visual representations, then separates 
 
 ### Hierarchical Structure Consistency
 
-HSCL introduces consistency constraints at three levels:
+The hierarchical structure consistency learning algorithm contains three levels of consistency:
 
-| Level | Consistency Type | Scope | Main Purpose |
-|:--|:--|:--|:--|
-| Feature level | Semantic consistency | Features within the same modality | Strengthen intra-modal interaction and feature aggregation |
-| Modality level | Representation consistency | Different modalities of the same sample | Align modality representations and improve modality synchrony |
-| Sample level | Geometric consistency | Different samples across mismatched modalities | Preserve cross-sample geometry and reduce modality discrepancy |
+- **Semantic consistency**
+- **Representation consistency**
+- **Geometric consistency**
 
-These constraints are applied to both the original multimodal features and the reconstructed features obtained from the decoupled representations.
+The consistency constraints are applied to the original multimodal representations and the reconstructed representations.
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/0fd91190-6925-4770-a4ea-5bf73a791927" alt="Hierarchical structure consistency" width="900" />
