@@ -94,3 +94,17 @@ All technical innovations and methods proposed in the associated paper are the i
 We firmly oppose and reject any form of **plagiarism** or unauthorized use of the ideas and implementations presented in our work.
 
 
+## Citation
+
+If you find this work useful in your research, please consider citing our paper:
+
+```bibtex
+@article{yang2026hierarchical,
+  title     = {Hierarchical Structure Consistency Learning for Multimodal Emotion Recognition},
+  author    = {Yang, Boan and Shi, Qinghongya and Zong, Xiaofen and Ye, Mang},
+  journal   = {IEEE Transactions on Multimedia},
+  year      = {2026},
+  publisher = {IEEE}
+}
+```
+
