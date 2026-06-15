@@ -1,98 +1,227 @@
-# Hierarchical Structure Consistency Learning for Multimodal Emotion Recognition (HSCL)
+# Hierarchical Structure Consistency Learning for Multimodal Emotion Recognition
 
-This repository contains the code for our project **Hierarchical Structure Consistency Learning for Multimodal Emotion Recognition (HSCL)**. This work is **published** in *IEEE Transactions on Multimedia*. Paper Link: https://doi.org/10.1109/TMM.2026.3694526
+<div align="center">
 
-We build a neural network framework based on **decoupling** and **attention mechanisms**, and introduce a **hierarchical structure consistency learning** algorithm. The proposed approach alleviates **cross-modal asynchrony** and enhances **intra-modal aggregation**.
+**HSCL: Hierarchical Structure Consistency Learning for Multimodal Emotion Recognition**
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/3af53001-2fc5-435f-9c82-d932a88c4aa1" alt="fig2" width="900" />
-</p>
+[Paper](https://doi.org/10.1109/TMM.2026.3694526) | [IEEE Xplore](https://doi.org/10.1109/TMM.2026.3694526)
 
-Our **hierarchical structure consistency learning** algorithm includes three levels of consistency: feature level, modality level, and sample level.
+</div>
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/0fd91190-6925-4770-a4ea-5bf73a791927" alt="fig3" width="900" />
-</p>
+## Overview
 
-Experiments on multiple public benchmark datasets demonstrate that our method achieves competitive or superior performance compared to existing baselines.
+This repository provides the official implementation of **Hierarchical Structure Consistency Learning for Multimodal Emotion Recognition (HSCL)**, published in *IEEE Transactions on Multimedia*.
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/9c3b0479-bd24-43a3-8964-21cec3862a6e" alt="results-1" width="900" />
-</p>
+HSCL addresses two important challenges in multimodal emotion recognition:
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/b4f534a8-e3cd-466a-b194-e99dc2dfb5c2" alt="results-2" width="900" />
-</p>
+1. **Insufficient intra-modal interaction**, which limits the model's ability to capture fine-grained emotional information within each modality.
+2. **Modality asynchrony**, which causes language, audio, and visual signals to express emotional information at different temporal rhythms.
 
-We also conduct various ablation studies to demonstrate the effectiveness and robustness of the core **parts**.
+The method combines feature decoupling, attention-based multimodal fusion, and hierarchical structure consistency learning. The consistency constraints are applied to both the original features and the reconstructed features.
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/5a456448-49a4-40ee-afde-826fe0ea2475" alt="ablation-1" width="800" />
-</p>
+## Contents
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/8dd0c945-6dc8-4e0f-9626-7cb1fbc6e49d" alt="ablation-2" width="900" />
-</p>
+- [Method](#method)
+- [Main Results](#main-results)
+- [Ablation Studies](#ablation-studies)
+- [Quick Start](#quick-start)
+- [Project Structure](#project-structure)
+- [Usage Notice](#usage-notice)
+- [Citation](#citation)
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/e6e426fe-db5d-4c90-8e78-cf70c2369cb8" alt="ablation-3" width="700" />
-</p>
+## Method
+
+### Overall Framework
+
+HSCL first extracts language, audio, and visual representations, then separates each modality into modality-exclusive and modality-irrelevant components. The resulting representations are processed by cross-modal and self-attention modules for emotion prediction.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/697a34f6-7b95-4668-9959-fbdb663d18a6" alt="ablation-4" width="700" />
+  <img src="https://github.com/user-attachments/assets/3af53001-2fc5-435f-9c82-d932a88c4aa1" alt="HSCL framework" width="900" />
 </p>
 
----
+### Hierarchical Structure Consistency
+
+HSCL introduces consistency constraints at three levels:
+
+| Level | Consistency Type | Scope | Main Purpose |
+|:--|:--|:--|:--|
+| Feature level | Semantic consistency | Features within the same modality | Strengthen intra-modal interaction and feature aggregation |
+| Modality level | Representation consistency | Different modalities of the same sample | Align modality representations and improve modality synchrony |
+| Sample level | Geometric consistency | Different samples across mismatched modalities | Preserve cross-sample geometry and reduce modality discrepancy |
+
+These constraints are applied to both the original multimodal features and the reconstructed features obtained from the decoupled representations.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/0fd91190-6925-4770-a4ea-5bf73a791927" alt="Hierarchical structure consistency" width="900" />
+</p>
+
+## Main Results
+
+HSCL is evaluated on **CMU-MOSI**, **CMU-MOSEI**, and **CH-SIMS** under aligned and unaligned settings. Accuracy and F1 values are reported as percentages. Higher values are better for accuracy, F1, and correlation, while lower values are better for MAE.
+
+### CMU-MOSI and CMU-MOSEI
+
+| Dataset | Setting | ACC2 ↑ | ACC5 ↑ | ACC7 ↑ | F1 ↑ | MAE ↓ | Corr ↑ |
+|:--|:--|--:|--:|--:|--:|--:|--:|
+| CMU-MOSI | Unaligned | 85.2 | 52.4 | 46.9 | 85.2 | 0.716 | **0.806** |
+| CMU-MOSI | Aligned | 85.5 | 51.5 | 46.5 | **85.6** | **0.712** | 0.785 |
+| CMU-MOSEI | Unaligned | **85.6** | **55.3** | **53.7** | **85.4** | 0.541 | 0.766 |
+| CMU-MOSEI | Aligned | 85.4 | 54.5 | 53.1 | **85.4** | **0.538** | **0.769** |
+
+### CH-SIMS
+
+| Dataset | Setting | ACC2 ↑ | ACC3 ↑ | ACC5 ↑ | F1 ↑ | MAE ↓ | Corr ↑ |
+|:--|:--|--:|--:|--:|--:|--:|--:|
+| CH-SIMS | Unaligned | **80.5** | **65.2** | **43.5** | **80.5** | **0.415** | **0.609** |
+
+The complete comparisons with all baselines are available in the paper.
+
+## Ablation Studies
+
+### Effect of Hierarchical Structure Consistency
+
+The following table compares the basic multimodal emotion recognition network with the complete HSCL model.
+
+| Dataset | Setting | Model | ACC2 ↑ | F1 ↑ | MAE ↓ |
+|:--|:--|:--|--:|--:|--:|
+| CMU-MOSI | Unaligned | MER Network | 82.2 | 82.1 | 0.775 |
+| CMU-MOSI | Unaligned | **HSCL** | **85.2** | **85.2** | **0.716** |
+| CMU-MOSEI | Unaligned | MER Network | 84.5 | 84.5 | 0.552 |
+| CMU-MOSEI | Unaligned | **HSCL** | **85.6** | **85.4** | **0.541** |
+| CH-SIMS | Unaligned | MER Network | 77.7 | 77.6 | 0.435 |
+| CH-SIMS | Unaligned | **HSCL** | **80.5** | **80.5** | **0.415** |
+| CMU-MOSI | Aligned | MER Network | 84.4 | 84.3 | 0.749 |
+| CMU-MOSI | Aligned | **HSCL** | **85.5** | **85.6** | **0.712** |
+| CMU-MOSEI | Aligned | MER Network | 85.1 | 85.1 | 0.540 |
+| CMU-MOSEI | Aligned | **HSCL** | **85.4** | **85.3** | **0.538** |
+
+### Unimodal Performance on CMU-MOSEI
+
+| Available Modality | Model | ACC2 ↑ | F1 ↑ | MAE ↓ |
+|:--|:--|--:|--:|--:|
+| Language only | MER Network | 80.2 | 80.6 | 0.570 |
+| Language only | **HSCL** | **84.6** | **84.6** | **0.559** |
+| Visual only | MER Network | 40.8 | 23.8 | 0.889 |
+| Visual only | **HSCL** | **62.9** | **48.5** | **0.833** |
+| Audio only | MER Network | 37.2 | 20.1 | 0.856 |
+| Audio only | **HSCL** | **62.8** | **48.7** | **0.822** |
+| Mean | MER Network | 52.7 | 41.5 | 0.777 |
+| Mean | **HSCL** | **70.1** | **60.6** | **0.738** |
+| Standard deviation | MER Network | 19.5 | 27.7 | 0.143 |
+| Standard deviation | **HSCL** | **10.3** | **17.0** | **0.127** |
+
+### Consistency Weights
+
+| Consistency Term | Symbol | Selected Value |
+|:--|:--:|--:|
+| Semantic consistency | α | 0.10 |
+| Representation consistency | β | 0.02 |
+| Geometric consistency | γ | 0.08 |
+
+### Feature Visualization
+
+The PCA visualization shows the distributions of the original and decoupled modality representations.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/e6e426fe-db5d-4c90-8e78-cf70c2369cb8" alt="PCA visualization of decoupled features" width="700" />
+</p>
+
+### Hyperparameter Sensitivity
+
+The sensitivity analysis evaluates the effects of the three consistency weights on the main evaluation metrics.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/697a34f6-7b95-4668-9959-fbdb663d18a6" alt="Hyperparameter sensitivity" width="700" />
+</p>
 
 ## Quick Start
 
-### 1. Environment Setup
+### 1. Clone the Repository
 
-1. Install Python 3.9 (or version compatible with your PyTorch).
-2. Install the required dependencies
+```bash
+git clone https://github.com/HKstetman/HSCL.git
+cd HSCL
+```
 
-### 2. Dataset Preparation
+### 2. Create the Environment
 
-1. Download and prepare the multimodal emotion recognition datasets you would like to use (e.g., CMU-MOSI, CMU-MOSEI, CH-SIMS etc., if applicable to your experiments).
-2. Modify the dataset **paths** in the configuration files so that they correctly point to your local dataset directories.
+Python 3.9 is recommended.
 
-### 3. Training
+```bash
+conda create -n hscl python=3.9 -y
+conda activate hscl
+```
 
-To train the HSCL model, run:
+Install a PyTorch build compatible with your CUDA environment, then install the remaining dependencies. The reference experiments used PyTorch `1.10.1+cu111` and Transformers `4.29.2`.
+
+```bash
+pip install transformers==4.29.2 numpy pandas scikit-learn easydict
+```
+
+### 3. Prepare the Datasets
+
+The code supports the following dataset identifiers:
+
+| Dataset | Identifier Used in the Code |
+|:--|:--|
+| CMU-MOSI | `mosi` |
+| CMU-MOSEI | `mosei` |
+| CH-SIMS | `sims` |
+
+Download the corresponding preprocessed multimodal features and update the dataset paths in:
+
+```text
+config/config.json
+```
+
+In particular, replace the placeholder value of `dataset_root_dir` and verify the aligned or unaligned feature paths for each dataset.
+
+### 4. Train HSCL
+
+Set `dataset_name` in `train.py` to one of `mosi`, `mosei`, or `sims`, then run:
 
 ```bash
 python train.py
 ```
 
-This script will:
+By default, checkpoints, experiment results, and logs are written to:
 
-* Load the specified dataset and configuration.
-* Train the HSCL model.
-* Save the trained model checkpoints (e.g., under `./pt` or another directory specified in the config).
+```text
+./pt
+./result
+./log
+```
 
-### 4. Testing
+### 5. Evaluate HSCL
 
-After training, you can evaluate the trained model by running:
+Set `dataset_name` in `test.py` and run:
 
 ```bash
 python test.py
 ```
 
-This script will:
+> [!IMPORTANT]
+> Ensure that the checkpoint path used in test mode in `run.py` points to the model checkpoint you want to evaluate. In the current code, this path may need to be updated manually before testing.
 
-* Load the trained model.
-* Perform evaluation on the test set.
-* Report the performance metrics on the chosen dataset(s).
+## Project Structure
 
----
+```text
+HSCL/
+├── config/          # Dataset and model configurations
+├── result/          # Saved experimental results
+├── trains/          # Training and evaluation implementations
+├── utils/           # Utility functions
+├── config.py        # Configuration loader
+├── data_loader.py   # Dataset loading and preprocessing
+├── run.py           # Main experiment controller
+├── train.py         # Training entry point
+├── test.py          # Testing entry point
+└── README.md
+```
 
+## Usage Notice
 
-## Copyright & Statement
-
-All technical innovations and methods proposed in the associated paper are the intellectual property of the authors.
-
-We firmly oppose and reject any form of **plagiarism** or unauthorized use of the ideas and implementations presented in our work.
-
+This repository is provided for academic research. Please cite the associated paper when using the code, method, or experimental results. Please also respect the authorship and applicable publication and redistribution terms.
 
 ## Citation
 
@@ -104,7 +233,7 @@ If you find this work useful in your research, please consider citing our paper:
   author    = {Yang, Boan and Shi, Qinghongya and Zong, Xiaofen and Ye, Mang},
   journal   = {IEEE Transactions on Multimedia},
   year      = {2026},
-  publisher = {IEEE}
+  publisher = {IEEE},
+  doi       = {10.1109/TMM.2026.3694526}
 }
 ```
-
